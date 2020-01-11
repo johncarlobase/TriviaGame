@@ -4,8 +4,9 @@
   }
 
   
-  .timer {
+  #timer {
       margin-right: 100px;
+      margin-left: 30px;
       width: 100px;
       height: 100px;
     border: 1px solid hsl(var(--hue), 100%, 30%);

@@ -11,64 +11,48 @@ nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   nextQuestion()
 })
-// // START
-// TimeRanges.addEventListener('click', countDown)
-// function countDown(minutes) {
-//   var seconds = 60;
-//   var mins = minutes
-//   function tick() {
-//       var counter = document.getElementById("timer");
-//       var current_minutes = mins-1
-//       seconds--;
-//       counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-//       if( seconds > 0 ) {
-//           setTimeout(tick, 1000);
-//       } else {
-//           if(mins > 1){
-//               countDown(mins-1);           
-//           }
-//       }
-//   }
-//   tick();
-// }
-// countdown(2);
-// // END
+//<!-- Timer -->
+var number = 30;
+var intervalId;
 
-// function mainTimer(){
-//   //document.getElementById("timerHere").innerHTML = "My First JavaScript";
-//   $("timerHere").html("YES!!");
-//   setTimeout(fiveSeconds,1000 *5);
-//   setTimeout(tenSeconds, 1000 *10);
-//   setTimeout(timeUp, 1000 *15);
-
-// function fiveSeconds() {
-//   console.log("10 secs");
-// }
-
-// function tenSeconds() {
-//   $("#timer").append("<h2>5 seconds left!</h2>");
-//  //document.getElementById("timer").innerHTML=();
-  
-//   console.log("5 secs left");
-
-// }
-
-// function timeUp() {
-//   $("#timer").append("<h2>Time Ups</h2>");
-//   document.getElementById("timer").innerHTML="10 secs";
-  
-//   console.log("Times Up");
-// }
+$("#start-btn").on("click", run);
+$("#next-btn").on("click", restart);
 
 
+function run() {
+  clearInterval(intervalId);
+  intervalId = setInterval(decrement, 1000);
+}
+
+function decrement() {
+  number--;
+
+  $("#timer").html(number);
+
+  if (number === 0) {
+    stop();
+    alert("Times Up!");
+  }
+}
+
+function stop() {
+  clearInterval(intervalId);
+}
+
+function restart() {
+  number = 30;
+  $("#timer").html(number);
+  run();
+}
+//run();
 
 
+//Timer Ends
 
 
 
 
 function startGame() {
-  //mainTimer();
   startButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
@@ -89,7 +73,7 @@ function showQuestion(question) {
     button.classList.add('btn')
     if (answer.correct) {
       button.dataset.correct = answer.correct
-      
+
     }
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
@@ -173,7 +157,7 @@ var questions = [
   {
     question: 'Who wrote "Gullivers Travels"?',
     answers: [
-        { text: 'Jonathan Swift', correct: true },
+      { text: 'Jonathan Swift', correct: true },
       { text: 'Michael Crichton', correct: false },
       { text: 'James Patterson', correct: false },
       { text: 'Dan Brown', correct: false },
