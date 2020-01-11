@@ -1,26 +1,82 @@
-const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-container')
+var questionElement = document.getElementById('question')
+var answerButtonsElement = document.getElementById('answer-buttons')
 
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
-  setNextQuestion()
+  nextQuestion()
 })
+// // START
+// TimeRanges.addEventListener('click', countDown)
+// function countDown(minutes) {
+//   var seconds = 60;
+//   var mins = minutes
+//   function tick() {
+//       var counter = document.getElementById("timer");
+//       var current_minutes = mins-1
+//       seconds--;
+//       counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+//       if( seconds > 0 ) {
+//           setTimeout(tick, 1000);
+//       } else {
+//           if(mins > 1){
+//               countDown(mins-1);           
+//           }
+//       }
+//   }
+//   tick();
+// }
+// countdown(2);
+// // END
+
+// function mainTimer(){
+//   //document.getElementById("timerHere").innerHTML = "My First JavaScript";
+//   $("timerHere").html("YES!!");
+//   setTimeout(fiveSeconds,1000 *5);
+//   setTimeout(tenSeconds, 1000 *10);
+//   setTimeout(timeUp, 1000 *15);
+
+// function fiveSeconds() {
+//   console.log("10 secs");
+// }
+
+// function tenSeconds() {
+//   $("#timer").append("<h2>5 seconds left!</h2>");
+//  //document.getElementById("timer").innerHTML=();
+  
+//   console.log("5 secs left");
+
+// }
+
+// function timeUp() {
+//   $("#timer").append("<h2>Time Ups</h2>");
+//   document.getElementById("timer").innerHTML="10 secs";
+  
+//   console.log("Times Up");
+// }
+
+
+
+
+
+
+
 
 function startGame() {
+  //mainTimer();
   startButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
-  setNextQuestion()
+  nextQuestion()
 }
 
-function setNextQuestion() {
+function nextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
@@ -28,7 +84,7 @@ function setNextQuestion() {
 function showQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
-    const button = document.createElement('button')
+    var button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
     if (answer.correct) {
@@ -49,8 +105,8 @@ function resetState() {
 }
 
 function selectAnswer(e) {
-  const selectedButton = e.target
-  const correct = selectedButton.dataset.correct
+  var selectedButton = e.target
+  var correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
@@ -77,7 +133,7 @@ function clearStatusClass(element) {
   element.classList.remove('wrong')
 }
 
-const questions = [
+var questions = [
   {
     question: 'What black stone is the most common volcanic rock on Earth?',
     answers: [

@@ -2,32 +2,37 @@
     box-sizing: border-box;
     font-family: Gotham Rounded;
   }
+
   
   .timer {
       margin-right: 100px;
       width: 100px;
       height: 100px;
     border: 1px solid hsl(var(--hue), 100%, 30%);
-    background-color: yellow;
+    background-color: #a7bed3;
     border-radius: 5px;
     padding: 5px, 10px;
     color: red;
-    font-size: 30px;
+    font-size: 20px;
     outline: none;
+    box-shadow: 0 0 10px 2px;
   }
-/* .header {
-    background-color: lightgray;
-    width: 100px;
-    height: 100px;
+ .header {
+    width: 800px;
+    max-width: 100%;
+    background-color: #3f7cac;
+    border-radius: 5px;
+    padding: 0px;
+    box-shadow: 0 0 10px 2px;
+    margin-bottom: 30px;
 
-} */
+} 
 
 .title {
     font-size: 20px;
-    color: yellow;
-    background-color: grey;
+    color: white;
   /* --hue: var(--hue-neutral); */
-    padding: 0;
+    padding: 10 px;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -36,6 +41,16 @@
 
 }
 
+.inst {
+  font-size: 12px;
+  color: white;
+/* --hue: var(--hue-neutral); */
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   :root {
     --hue-neutral: 200;
     --hue-wrong: 0;
@@ -56,12 +71,12 @@
   
   body.correct {
     --hue: var(--hue-correct);
-  }
+  } 
   
   body.wrong {
     --hue: var(--hue-wrong);
   }
-  
+  /* Main Container */
   .container {
     width: 800px;
     max-width: 80%;
@@ -70,7 +85,7 @@
     padding: 10px;
     box-shadow: 0 0 10px 2px;
   }
-  
+  /* Answer Buttons */
   .btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -78,6 +93,7 @@
     margin: 20px 0;
   }
   
+  /* Every Button */
   .btn {
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
@@ -105,7 +121,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
-    margin-left: 50px;
+    margin-left: 0px;
   }
   
   .controls {
